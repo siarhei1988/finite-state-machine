@@ -95,7 +95,12 @@ class FSM {
      * @returns {Boolean}
      */
     undo() {
+        if(this.statesStack.length === 1){
+            return false;
+        }
 
+        this.statesStack.pop();
+        return true;
     }
 
     /**
@@ -104,14 +109,16 @@ class FSM {
      * @returns {Boolean}
      */
     redo() {
-
+        if(this.statesStack.length === 1){
+            return false;
+        }
     }
 
     /**
      * Clears transition history
      */
     clearHistory() {
-
+        this.reset();
     }
 }
 
