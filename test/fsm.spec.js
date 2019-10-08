@@ -184,87 +184,87 @@ describe('FSM', () => {
             expect(student.redo()).to.be.false;
         });
 
-        // it('cancels undo', () => {
-        //     const student = new FSM(config);
+        it('cancels undo', () => {
+            const student = new FSM(config);
 
-        //     student.trigger('study');
-        //     student.undo();
-        //     student.redo();
-        //     expect(student.getState()).to.equal('busy');
+            student.trigger('study');
+            student.undo();
+            student.redo();
+            expect(student.getState()).to.equal('busy');
 
-        //     student.trigger('get_tired');
-        //     student.trigger('get_hungry');
+            student.trigger('get_tired');
+            student.trigger('get_hungry');
 
-        //     student.undo();
-        //     student.undo();
+            student.undo();
+            student.undo();
 
-        //     student.redo();
-        //     student.redo();
+            student.redo();
+            student.redo();
 
-        //     expect(student.getState()).to.equal('hungry');
-        // });
+            expect(student.getState()).to.equal('hungry');
+        });
 
-        // it('returns true if transition was successful', () => {
-        //     const student = new FSM(config);
+        it('returns true if transition was successful', () => {
+            const student = new FSM(config);
 
-        //     student.trigger('study');
-        //     student.undo();
-        //     expect(student.redo()).to.be.true;
-        // });
+            student.trigger('study');
+            student.undo();
+            expect(student.redo()).to.be.true;
+        });
 
-        // it('returns false if redo is not available', () => {
-        //     const student = new FSM(config);
+        it('returns false if redo is not available', () => {
+            const student = new FSM(config);
 
-        //     student.trigger('study');
-        //     student.undo();
-        //     student.redo();
-        //     expect(student.redo()).to.be.false;
-        // });
+            student.trigger('study');
+            student.undo();
+            student.redo();
+            expect(student.redo()).to.be.false;
+        });
 
-        // it('correct cancels multiple undos ', () => {
-        //     const student = new FSM(config);
+        it('correct cancels multiple undos ', () => {
+            const student = new FSM(config);
 
-        //     student.trigger('study');
-        //     student.undo();
-        //     student.redo();
-        //     student.undo();
-        //     student.redo();
-        //     student.undo();
-        //     student.redo();
-        //     student.undo();
-        //     student.redo();
-        //     student.undo();
-        //     student.redo();
+            student.trigger('study');
+            student.undo();
+            student.redo();
+            student.undo();
+            student.redo();
+            student.undo();
+            student.redo();
+            student.undo();
+            student.redo();
+            student.undo();
+            student.redo();
 
-        //     expect(student.getState()).to.equal('busy');
+            expect(student.getState()).to.equal('busy');
 
-        // });
+        });
 
-        // it('disables redo after trigger call', () => {
-        //     const student = new FSM(config);
+        it('disables redo after trigger call', () => {
+            const student = new FSM(config);
 
-        //     student.trigger('study');
-        //     student.undo();
-        //     student.trigger('study');
-        //     student.undo();
-        //     student.trigger('study');
-        //     student.redo();
+            student.trigger('study');
+            student.undo();
+            student.trigger('study');
+            student.undo();
+            student.trigger('study');
+            student.redo();
 
-        //     expect(student.redo()).to.be.false;
-        // });
+            expect(student.redo()).to.be.false;
+        });
 
-        // it('disables redo after changeState call', () => {
-        //     const student = new FSM(config);
+        it('disables redo after changeState call', () => {
+            const student = new FSM(config);
 
-        //     student.changeState('hungry');
-        //     student.undo();
-        //     student.changeState('normal');
-        //     student.undo();
-        //     student.changeState('busy');
-        //     student.redo();
+            student.changeState('hungry');
+            student.undo();
+            student.changeState('normal');
+            student.undo();
+            student.changeState('busy');
+            student.redo();
 
-        //     expect(student.redo()).to.be.false;
-        // });
+            expect(student.redo()).to.be.false;
+        });
     });
 
     describe('#clearHistory', () => {
